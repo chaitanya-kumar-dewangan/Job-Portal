@@ -32,42 +32,29 @@ class _OTPVerificationPageState extends State<OTPVerificationPage> {
         String userId = response!.user!.id;
 
         // Check if user exists in 'users' table
-        final userData =
-            await Supabase.instance.client
-                .from('users')
-                .select()
-                .eq('user_id', userId) // Correct column key
-                .maybeSingle();
+        final userData = await Supabase.instance.client
+            .from('users')
+            .select()
+            .eq('user_id', userId) // Correct column key
+            .maybeSingle();
 
         if (userData != null) {
           // User found → Navigate to FoodCategoryScreen
           Navigator.pushReplacement(
             context,
-            MaterialPageRoute(
-              builder: (context) => HomePage()
-            ),
+            MaterialPageRoute(builder: (context) => HomePage()),
           );
         } else {
           // User not found → Navigate to Information screen
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(
-              builder:
-                  (context) => FaceCameraScreen(
-                    userId: userId,
-                    phoneNumber: widget.phoneNumber,
-                  ),
+              builder: (context) => FaceCameraScreen(
+                userId: userId,
+                phoneNumber: widget.phoneNumber,
+              ),
             ),
           );
-          // Navigator.push(
-          //   context,
-          //   MaterialPageRoute(
-          //     builder: (context) => Information(
-          //       userId: userId,
-          //       phoneNumber: widget.phoneNumber,
-          //     ),
-          //   ),
-          // );
         }
       } else {
         // Invalid OTP → Show toast
@@ -149,15 +136,12 @@ class _OTPVerificationPageState extends State<OTPVerificationPage> {
                         ),
                         fixedSize: const Size(200, 48),
                       ),
-                      child:
-                          isLoading
-                              ? const CircularProgressIndicator(
-                                color: Colors.white,
-                              )
-                              : const Text(
-                                "Verify",
-                                style: TextStyle(color: Colors.white),
-                              ),
+                      child: isLoading
+                          ? const CircularProgressIndicator(color: Colors.white)
+                          : const Text(
+                              "Verify",
+                              style: TextStyle(color: Colors.white),
+                            ),
                     ),
                   ),
                 ],

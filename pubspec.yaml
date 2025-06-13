@@ -71,6 +71,8 @@ flutter:
     - assets/animations/meeting.json
     - assets/animations/slide_jobs.json
     - assets/animations/slide_jobs2.json
+    - assets/role_icon/individual.jpg
+    - assets/role_icon/company.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../authentication/screens/phone_auth_page.dart';
+import '../../main.dart';
 
 class OnboardingProvider extends ChangeNotifier {
   final PageController controller = PageController();
@@ -41,8 +42,12 @@ class OnboardingProvider extends ChangeNotifier {
     } else {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => PhoneAuthPage()),
+        MaterialPageRoute(builder: (context) => RoleSelectionScreen()),
       );
+      // Navigator.pushReplacement(
+      //   context,
+      //   MaterialPageRoute(builder: (context) => PhoneAuthPage()),
+      // );
     }
   }
 
